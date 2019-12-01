@@ -8,15 +8,16 @@ window.addEventListener("load", function () {
     document.getElementById("greeting").innerHTML = `Welcome ${userId}!`;
     messageService.getAllMessages().then(successCallback, errorCallback);
     
-    function successCallback() {
+    function successCallback(response) {
         //this data comes from the resolve method?
         populateMessages(response); //"Promise is successful!");
     }
-    function errorCallback () {
+    function errorCallback (response) {
         //this data comes from the resolve method?
         console.log(response); //"An error occured");
     }
 });
+
 function populateMessages(messages){
     messages.forEach(message => {
         addMessagesToThread(message);
@@ -37,6 +38,7 @@ function populateMessages(messages){
     //             .appendChild(messageParagraph);
     //         document.getElementById("message-list").appendChild(messageListItem);
     //     })
+    // };
 
 
     function createFormListener () {
@@ -64,7 +66,7 @@ function populateMessages(messages){
     };
 
     function addMessagesToThread (message){
-        //messages.array.forEach(mesage => {
+        //messages.array.forEach(message => {
             const messageListItem = document.createElement("LI");
             const userIdHeading = document.createElement("h3");
             const messageParagraph = document.createElement("p");
@@ -76,6 +78,5 @@ function populateMessages(messages){
                 .appendChild(userIdHeading)
                 .appendChild(messageParagraph);
             document.getElementById("message-list").appendChild(messageListItem);
-    };
-
+    }
 

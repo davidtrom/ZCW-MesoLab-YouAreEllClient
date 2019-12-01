@@ -4,7 +4,7 @@ export default class MessageService {
         const request = new XMLHttpRequest();
         return new Promise(function(resolve, reject){
             request.onload = function(){    //set up our listener to process completed requests
-                if(request.status >=200 && request < 300){
+                if(request.status >=200 && request.status < 300){
                     const threads = JSON.parse(request.responseText); //this is the returned text
                     resolve(threads);
                 }
